@@ -2,7 +2,7 @@ package br.com.herculano.utilities.templates;
 
 import org.springframework.stereotype.Component;
 
-@Component(value = "CommonMessage")
+@Component(value = "CommonMessageTemplate")
 public class CommonMessageTemplate extends MessageTemplate {
 
 	private final String NOT_FOUND = "common.notfound";
