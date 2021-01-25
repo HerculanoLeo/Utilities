@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
@@ -45,6 +46,20 @@ public class RepositoryUtils {
 		String queryStr = "SELECT COUNT(count.*) FROM (" + query + ") AS count";
 		
 		int firstResult = em.createNativeQuery(queryStr).getFirstResult();
+		
+		return new Long(firstResult);
+	}
+	
+	public static Long totalRegistros(String queryStr, EntityManager em, Map<String, Object> params) {
+		queryStr = "SELECT COUNT(count.*) FROM (" + queryStr + ") AS count";
+		
+		Query query = em.createNativeQuery(queryStr);
+		
+		for(Map.Entry<String, Object> param : params.entrySet()) {
+			query.setParameter(param.getKey(), param.getValue());
+		}
+		
+		int firstResult = query.getFirstResult();
 		
 		return new Long(firstResult);
 	}
