@@ -9,13 +9,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @SuppressWarnings("rawtypes")
-public class ServiceTemplate<E, JPA, M extends MessageTemplate> {
+public class ServiceTemplate<E, JPA extends JpaRepository, M extends MessageTemplate> {
 
 	protected JpaRepository repository;
 	
 	protected M message;
 
-	public ServiceTemplate(JpaRepository repository, M message) {
+	public ServiceTemplate(JPA repository, M message) {
 		this.repository = repository;
 		this.message = message;
 	}
