@@ -42,7 +42,6 @@ public class ServiceTemplate<E, JPA extends JpaRepository, M extends MessageTemp
 
 	@SuppressWarnings("unchecked")
 	public E consultaPorId(Integer id) {
-
 		Optional optional = repository.findById(id);
 
 		if (!optional.isPresent()) {
