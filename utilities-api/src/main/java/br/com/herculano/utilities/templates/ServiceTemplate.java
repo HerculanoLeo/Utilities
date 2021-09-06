@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @SuppressWarnings("rawtypes")
-public class ServiceTemplate<E, JPA extends JpaRepository, M extends MessageTemplate> {
+public class ServiceTemplate<E, ID, JPA extends JpaRepository, M extends MessageTemplate> {
 
 	protected JpaRepository repository;
 	
@@ -36,12 +36,12 @@ public class ServiceTemplate<E, JPA extends JpaRepository, M extends MessageTemp
 	}
 
 	@SuppressWarnings("unchecked")
-	public Optional<E> findById(Integer id) {
+	public Optional<E> findById(ID id) {
 		return repository.findById(id);
 	}
 
 	@SuppressWarnings("unchecked")
-	public E consultaPorId(Integer id) {
+	public E consultaPorId(ID id) {
 		Optional optional = repository.findById(id);
 
 		if (!optional.isPresent()) {
