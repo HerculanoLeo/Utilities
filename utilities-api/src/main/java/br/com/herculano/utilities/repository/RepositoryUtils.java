@@ -40,8 +40,8 @@ public class RepositoryUtils {
 		String queryStr = "SELECT COUNT(count.*) FROM (" + query + ") AS count";
 
 		int firstResult = em.createNativeQuery(queryStr).getFirstResult();
-
-		return new Long(firstResult);
+		
+		return Long.valueOf(firstResult);
 	}
 
 	public static Long totalRegistros(String queryStr, EntityManager em, Map<String, Object> params) {
@@ -55,7 +55,7 @@ public class RepositoryUtils {
 
 		int firstResult = query.getFirstResult();
 
-		return new Long(firstResult);
+		return Long.valueOf(firstResult);
 	}
 
 }
